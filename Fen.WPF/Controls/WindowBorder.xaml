@@ -1,0 +1,20 @@
+﻿<Window x:Class="Fen.Wpf.Controls.WindowBorder"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Fen.WPF.Controls"
+        mc:Ignorable="d"
+        Title="WindowBorder" Height="450" Width="800">
+    <Grid>
+
+        <Border Width="200" Height="80"  Background="AliceBlue" BorderBrush="red" BorderThickness="1,0,1,1" CornerRadius="20">
+            <StackPanel>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Red">我是Label1</Label>
+                <Button Height="30" Width="80" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="Button_Click" Cursor="Hand">
+                   我是按钮</Button>
+            </StackPanel>
+
+        </Border>
+    </Grid>
+</Window>

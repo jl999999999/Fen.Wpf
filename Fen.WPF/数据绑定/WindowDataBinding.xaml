@@ -1,0 +1,22 @@
+﻿<Window x:Class="Fen.Wpf.数据绑定.WindowDataBinding"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Fen.Wpf.数据绑定"
+        xmlns:c="clr-namespace:Fen.Wpf.Entity"
+        mc:Ignorable="d"
+
+        Title="WindowDataBinding" Height="500" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.Resources>
+            <c:MyData x:Key="myDataSource"></c:MyData>
+        </Grid.Resources>
+        <Grid.DataContext>
+            <Binding Source="{StaticResource myDataSource}"></Binding>
+
+        </Grid.DataContext>
+        <Button Background="{Binding Path=ColorName}" Width="{Binding Path=Width}" Content="{Binding Path=Value}" Click="Button_Click_1" Height="30"></Button>
+        <Label Name="MyLabel" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Height="30" FontSize="15" Content="{Binding Path=Title}"></Label>
+    </Grid>
+</Window>

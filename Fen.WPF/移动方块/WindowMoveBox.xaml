@@ -1,0 +1,49 @@
+﻿<Window x:Class="Fen.Wpf.移动方块.WindowMoveBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Fen.Wpf.移动方块"
+        mc:Ignorable="d"
+        Title="WindowMoveBox" Height="900" Width="900" KeyDown="Grid_KeyDown">
+    <Grid Background="AliceBlue" Name="gridcontent">
+        <!-- 定义单元格Border的通用样式 -->
+        <Grid.Resources>
+            <!-- 非最后一行的单元格样式 -->
+            <Style x:Key="GridCellBorderStyle" TargetType="Border">
+                <Setter Property="BorderBrush" Value="Black"/>
+                <Setter Property="Background" Value="Transparent"/>
+            </Style>
+            <!-- 最后一行的单元格样式（补充下边框） -->
+            <Style x:Key="GridLastRowCellBorderStyle" TargetType="Border" BasedOn="{StaticResource GridCellBorderStyle}">
+                <Setter Property="BorderThickness" Value="0 1 1 1"/>
+            </Style>
+        </Grid.Resources>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <!-- 第一行（应用通用样式，手动设单边边框） -->
+        <Border Name="B1" Grid.Row="0" Grid.Column="0" Style="{StaticResource GridCellBorderStyle}" BorderThickness="1 1 1 0"/>
+        <Border Name="B2" Grid.Row="0" Grid.Column="1" Style="{StaticResource GridCellBorderStyle}" BorderThickness="0 1 1 0"/>
+        <Border Name="B3" Grid.Row="0" Grid.Column="2" Style="{StaticResource GridCellBorderStyle}" BorderThickness="0 1 1 0"/>
+
+        <!-- 第二行 -->
+        <Border Name="B4" Grid.Row="1" Grid.Column="0" Style="{StaticResource GridCellBorderStyle}" BorderThickness="1 1 1 0"/>
+        <Border Name="B5" Grid.Row="1" Grid.Column="1" Style="{StaticResource GridCellBorderStyle}" BorderThickness="0 1 1 0" Background="Yellow"/>
+        <Border Name="B6" Grid.Row="1" Grid.Column="2" Style="{StaticResource GridCellBorderStyle}" BorderThickness="0 1 1 0"/>
+
+        <!-- 第三行（应用最后一行样式） -->
+        <Border Name="B7" Grid.Row="2" Grid.Column="0" Style="{StaticResource GridLastRowCellBorderStyle}" BorderThickness="1 1 1 1"/>
+        <Border Name="B8" Grid.Row="2" Grid.Column="1" Style="{StaticResource GridLastRowCellBorderStyle}"/>
+        <Border Name="B9" Grid.Row="2" Grid.Column="2" Style="{StaticResource GridLastRowCellBorderStyle}"/>
+    </Grid>
+</Window>
