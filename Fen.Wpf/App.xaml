@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:Fen.Wpf.Controls"
              StartupUri="Controls/WindowGroupBox.xaml">
     <Application.Resources>
-         
+
     </Application.Resources>
 </Application>
