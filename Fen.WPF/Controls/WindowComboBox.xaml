@@ -34,12 +34,14 @@
             <ComboBox ItemsSource="{Binding}" Name="comboBox4" Text="第四个" IsEditable="true" IsReadOnly="false" Width="120" Height="30" VerticalAlignment="Top">
 
             </ComboBox>
-            <ComboBox Name="comboBox5" Text="第五个" IsEditable="true" IsReadOnly="false" Width="120" Height="30" VerticalAlignment="Top">
+            <ComboBox Name="comboBox5" Text="第五个" IsEditable="true" IsReadOnly="false" Width="120" Height="30" VerticalAlignment="Top" Margin="0,0,0,60">
 
             </ComboBox>
-            <Button Width="120">删除Items</Button>
-            <Button Width="120">删除DataContext</Button>
-            <Button Width="120">删除ItemsSource</Button>
+        <StackPanel>
+        <Button Width="120" Click="Button_Click_1" >删除Items</Button>
+            <Button Width="120" Click="Button_Click_2">删除DataContext</Button>
+            <Button Width="120" Click="Button_Click_3">删除ItemsSource</Button>
+        </StackPanel>
         </StackPanel>
     </Grid>
 </Window>
