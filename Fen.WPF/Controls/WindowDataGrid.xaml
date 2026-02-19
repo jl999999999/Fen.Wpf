@@ -1,0 +1,94 @@
+﻿<Window x:Class="Fen.Wpf.Controls.WindowDataGrid"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Fen.Wpf.Controls"
+        mc:Ignorable="d"
+        Title="WindowDataGrid" Height="800" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <!-- 30×30图标大小的RadioButton样式 -->
+        <Style x:Key="RadioButton30x30Style" TargetType="RadioButton">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <!-- 核心：30×30的图标容器 -->
+                            <Grid Width="30" Height="30" Margin="0 0 10 0">
+                                <!-- 外层圆形边框（30×30图标主体） -->
+                                <Ellipse x:Name="OuterCircle"
+                                         Stroke="#FF666666" StrokeThickness="2" Fill="White"/>
+                                    <!-- 图标背景色 -->
+                                    <!-- 选中时的内部圆点（30×0.6=18，比例协调） -->
+                                    <Ellipse x:Name="InnerDot"
+                                         Width="18" Height="18"
+                                         Fill="#FF000000"
+                                         Visibility="Collapsed" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                            <!-- 文字内容（可单独设置字体大小，不影响图标） -->
+                            <ContentPresenter VerticalAlignment="Center"></ContentPresenter>
+                        </StackPanel>
+                        <!-- 交互状态触发器（保持原生体验） -->
+                        <ControlTemplate.Triggers>
+                            <!-- 选中时显示内部圆点 -->
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="InnerDot" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                            <!-- 鼠标悬浮时边框变蓝 -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="OuterCircle" Property="Stroke" Value="#FF0066CC"/>
+                            </Trigger>
+                            <!-- 禁用状态置灰 -->
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="OuterCircle" Property="Stroke" Value="#FFCCCCCC"/>
+                                <Setter TargetName="InnerDot" Property="Fill" Value="#FFCCCCCC"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <!-- 控件整体边距，避免挤在一起 -->
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <StackPanel>
+            <DataGrid ItemsSource="{Binding}" FontSize="30" Name="grid1" AutoGenerateColumns="False" GridLinesVisibility="Horizontal">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding Id}" Visibility="Hidden"></DataGridTextColumn>
+                    <DataGridTextColumn Header="用户姓名" Binding="{Binding Name}" Width="200"></DataGridTextColumn>
+                    <DataGridTextColumn Header="年龄" Binding="{Binding Age}" Width="100"></DataGridTextColumn> 
+                    <DataGridComboBoxColumn x:Name="depts" Header="部门" SelectedValueBinding="{Binding DeptId}" Width="200"></DataGridComboBoxColumn>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock Background="Blue">自定义列1</TextBlock>
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox></TextBox></DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock Background="Yellow">性别</TextBlock>
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <RadioButton Name="rad1" Content="男" Style="{StaticResource RadioButton30x30Style}"></RadioButton>
+                                    <RadioButton Name="rad0" Content="女" Margin="100,0,0,0" Style="{StaticResource RadioButton30x30Style}"></RadioButton>
+                                </Grid>
+                               
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+            <Button FontSize="20" Content="获取选中行" Click="BtnGetSelectedRow_Click" Width="200" Margin="0,10"/>
+            <Button FontSize="20" Content="获取指定单元格" Click="BtnGetSpecificCell_Click" Width="200" Margin="0,10"/>
+            <Button FontSize="20" Content="遍历所有行" Click="BtnTraverseAllRows_Click" Width="200" Margin="0,10"/>
+        </StackPanel>
+    </Grid>
+</Window>

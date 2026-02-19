@@ -1,0 +1,30 @@
+﻿<Window x:Class="Fen.Wpf.Controls.WindowDockPanel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Fen.Wpf.Controls"
+        mc:Ignorable="d"
+        Title="WindowDockPanel" Height="450" Width="800">
+    <Grid>
+        <!--<DockPanel Background="Beige" LastChildFill="False">
+            <DockPanel DockPanel.Dock="Left" Background="Red" Width="50"></DockPanel>
+            <DockPanel DockPanel.Dock="Left" Background="Red" Width="50"></DockPanel>
+            <DockPanel DockPanel.Dock="Left" Background="Red" Width="50"></DockPanel>
+            <DockPanel DockPanel.Dock="Left" Background="GreenYellow" Width="50"></DockPanel>
+        </DockPanel>-->
+        <DockPanel Background="AliceBlue" LastChildFill="true">
+            <StackPanel DockPanel.Dock="Left" Background="Red" Width="50"></StackPanel>
+            <StackPanel DockPanel.Dock="Top" Background="Black" Height="100"></StackPanel>
+            <StackPanel DockPanel.Dock="Bottom" Background="Green" Height="100"></StackPanel>
+            <StackPanel DockPanel.Dock="Right" Background="GreenYellow" Width="100"></StackPanel>
+            
+            <DockPanel DockPanel.Dock="Right" Background="Purple" LastChildFill="false">
+                <DockPanel DockPanel.Dock="Right" Background="Teal" Height="30">
+
+                </DockPanel>
+            </DockPanel>
+        </DockPanel>
+
+    </Grid>
+</Window>
